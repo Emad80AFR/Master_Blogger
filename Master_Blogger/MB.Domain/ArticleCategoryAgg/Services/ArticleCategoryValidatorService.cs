@@ -15,7 +15,7 @@ public class ArticleCategoryValidatorService : IArticleCategoryValidatorService
     {
         if (_articleCategoryRepository.Exist(title))
         {
-            throw new Duplication("This record is already exists");
+            throw new DuplicationExeption("This record is already exists");
         }
     }
 }
