@@ -20,8 +20,15 @@ namespace MB.Application
 
         public void Create(CreateArticle command)
         {
-            var Article = new Article(command.Title, command.ShortDescription, command.Image, command.Content, command.ArticleCategoryId);
+            var article = new Article(command.Title, command.ShortDescription, command.Image, command.Content, command.ArticleCategoryId);
+            _articleRepository.Create(article);
 
+        }
+
+        public void Edit(EditArticle command)
+        {
+            var article= _articleRepository.Get(command.Id);
+            article.Edit(command.Title,command.ShortDescription,command.Image,command.Content,command.ArticleCategoryId);
         }
     }
 }

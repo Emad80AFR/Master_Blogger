@@ -1,8 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Permissions;
-using MB.Application.Contracts.Article;
-using MB.Application.Contracts.ArticleCategory;
+using MB.Application.Contract.Article;
+using MB.Application.Contract.ArticleCategory;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;

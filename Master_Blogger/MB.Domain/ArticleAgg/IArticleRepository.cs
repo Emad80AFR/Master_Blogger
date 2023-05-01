@@ -7,5 +7,6 @@ namespace MB.Domain.ArticleAgg
         List<ArticleViewModel> GetList();
         void Save();
         void Create(Article entity);
+        Article Get(long id);
     }
 }
