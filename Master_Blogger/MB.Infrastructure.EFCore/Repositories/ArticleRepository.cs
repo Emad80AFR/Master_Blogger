@@ -27,5 +27,15 @@ namespace MB.Infrastructure.EFCore.Repositories
 
             }).ToList();
         }
+
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+
+        public void Create(Article entity)
+        {
+            _context.Articles.Add(entity);
+        }
     }
 }
