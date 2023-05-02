@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata;
-
-namespace MB.Application.Contract.Article
+﻿namespace MB.Application.Contract.Article
 {
     public class ArticleViewModel
     {

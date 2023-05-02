@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using MB.Infrastructure.Query;
+﻿using MB.Infrastructure.Query;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MB.Presentation.MVCCore.Pages

@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using MB.Application.Contracts.Comment;
+using MB.Application.Contract.Comment;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
