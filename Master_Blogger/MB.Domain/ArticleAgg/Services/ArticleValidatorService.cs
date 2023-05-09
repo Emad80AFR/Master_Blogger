@@ -11,7 +11,7 @@
 
         public void CheckThatThisRecordIsAlreadyExist(string title)
         {
-            if (_articleRepository.Exist(title))
+            if (_articleRepository.Exist(x=>x.Title==title))
                 throw new InvalidOperationException();
 
         }

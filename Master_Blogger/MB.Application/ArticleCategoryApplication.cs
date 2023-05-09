@@ -23,26 +23,26 @@ namespace MB.Application
                 Title = x.Title,
                 IsDeleted = x.IsDeleted,
                 CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture)
-            }).ToList();
+            }).OrderByDescending(x=>x.Id).ToList();
         }
 
         public void Create(CreateArticleCategory command)
         {
             var category = new ArticleCategory(command.Title,_validatorService);
-            _repository.Add(category);
+            _repository.Create(category);
         }
 
         public void Rename(RenameArticleCategory command)
         {
             
-            var category = _repository.GetBy(command.Id);
+            var category = _repository.Get(command.Id);
             category.Rename(command.Title);
             _repository.Save();
         }
 
-        public RenameArticleCategory Get(long id)
+        public RenameArticleCategory Get(long id)   
         {
-            var category = _repository.GetBy(id);
+            var category = _repository.Get(id);
             return new RenameArticleCategory
             {
                 Id = category.Id,
@@ -53,14 +53,14 @@ namespace MB.Application
 
         public void Remove(long id)
         {
-            var category=_repository.GetBy(id);
+            var category=_repository.Get(id);
             category.Remove();
             _repository.Save();
         }
 
         public void Activate(long id)
         {
-            var category=_repository.GetBy(id);
+            var category=_repository.Get(id);
             category.Activate();    
             _repository.Save();
         }

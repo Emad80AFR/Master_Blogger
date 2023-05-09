@@ -15,6 +15,7 @@ namespace MB.Infrastructure.EFCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             var assembly = typeof(ArticleMapping).Assembly;
             modelBuilder.ApplyConfigurationsFromAssembly(assembly); 
             base.OnModelCreating(modelBuilder);

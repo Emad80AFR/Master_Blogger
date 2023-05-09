@@ -19,9 +19,10 @@ namespace MB.Infrastructure.core
     {
         public static void Config(IServiceCollection services, string? connectionString)
         {
+            services.AddDbContext<MasterBloggerContext>(x => x.UseSqlServer(connectionString));
+
             services.AddTransient<IArticleCategoryRepository, ArticleCategoryRepository>();
             services.AddTransient<IArticleCategoryApplication, ArticleCategoryApplication>();
-            services.AddDbContext<MasterBloggerContext>(x => x.UseSqlServer(connectionString));
             services.AddTransient<IArticleCategoryValidatorService, ArticleCategoryValidatorService>();
 
             services.AddTransient<IArticleRepository, ArticleRepository>();

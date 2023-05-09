@@ -1,15 +1,16 @@
 ﻿using System.Globalization;
+using FrameWork.Infrastructure;
 using MB.Application.Contract.Article;
 using MB.Domain.ArticleAgg;
 using Microsoft.EntityFrameworkCore;
 
 namespace MB.Infrastructure.EFCore.Repositories
 {
-    public class ArticleRepository:IArticleRepository
+    public class ArticleRepository:BaseRepository<long,Article>,IArticleRepository
     {
         private readonly MasterBloggerContext _context;
 
-        public ArticleRepository(MasterBloggerContext context)
+        public ArticleRepository(MasterBloggerContext context) : base(context)
         {
             _context = context;
         }
@@ -33,17 +34,7 @@ namespace MB.Infrastructure.EFCore.Repositories
             _context.SaveChanges();
         }
 
-        public void Create(Article entity)
-        {
-            _context.Articles.Add(entity);
-            Save();
-        }
-
-        public Article Get(long id)
-        {
-            return _context.Articles.FirstOrDefault(x => x.Id == id)!;
-        }
-
+        
         public bool Exist(string title)
         {
            return _context.Articles.Any(x => x.Title == title);

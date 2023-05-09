@@ -23,13 +23,13 @@ namespace MB.Application
         public List<CommentViewModel> GetList()
         {
             
-            return _commentRepository.GetAll();
+            return _commentRepository.GetList();
         }
 
         public void Confirm(long id)
         {
 
-            var comment=_commentRepository.GetBy(id);
+            var comment=_commentRepository.Get(id);
             comment.Confirm();
             _commentRepository.Save();
         }
@@ -37,7 +37,7 @@ namespace MB.Application
         public void Cancel(long id)
         {
 
-            var comment = _commentRepository.GetBy(id);
+            var comment = _commentRepository.Get(id);
             comment.Cancel();
             _commentRepository.Save();
         }

@@ -1,4 +1,17 @@
+using MB.Application.Contract.Article;
+using MB.Application.Contract.ArticleCategory;
+using MB.Application.Contract.Comment;
+using MB.Application;
+using MB.Domain.ArticleAgg.Services;
+using MB.Domain.ArticleAgg;
+using MB.Domain.ArticleCategoryAgg.Services;
+using MB.Domain.ArticleCategoryAgg;
+using MB.Domain.CommentAgg;
 using MB.Infrastructure.core;
+using MB.Infrastructure.EFCore.Repositories;
+using MB.Infrastructure.EFCore;
+using MB.Infrastructure.Query;
+using Microsoft.EntityFrameworkCore;
 
 namespace MB.Presentation.MVCCore
 {
@@ -8,16 +21,17 @@ namespace MB.Presentation.MVCCore
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddRazorPages();
 
+            Bootstrapper.Config(builder.Services, builder.Configuration.GetConnectionString("MasterBloggerDB"));
+
             var app = builder.Build();
-            Bootstrapper.Config(builder.Services,builder.Configuration.GetConnectionString("MasterBloggerDB"));
-            // Configure the HTTP request pipeline.
+
+
+
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 

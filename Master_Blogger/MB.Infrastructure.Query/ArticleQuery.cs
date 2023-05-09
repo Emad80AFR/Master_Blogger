@@ -39,13 +39,13 @@ public class ArticleQuery : IArticleQuery
             CreationDate = x.CreationDate.ToString(CultureInfo.InvariantCulture),
             ArticleCategory = x.ArticleCategory.Title,
             Content = x.Content,
-            CommentsCount = x.Comments.Count(x => x.Status == Statuses.Confirmed),
-            Comments = MapComments(x.Comments.Where(x=>x.Status==Statuses.Confirmed))
+            CommentsCount = x.Comments.Count(comment => comment.Status == Statuses.Confirmed),
+            Comments = MapComments(x.Comments.Where(comment=>comment.Status==Statuses.Confirmed))
 
         }).FirstOrDefault(x=>x.Id==id)!;
     }
 
-    private List<CommentQueryView> MapComments(IEnumerable<Comment> comments)
+    private static List<CommentQueryView> MapComments(IEnumerable<Comment> comments)
     {
         
         return comments.Select(x=>new CommentQueryView
